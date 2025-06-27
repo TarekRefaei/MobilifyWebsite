@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #111827;
+  --primary: #4f46e5;
+  --logo-bg: #1a1a1a;
+  --font-inter: 'Inter', system-ui, sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ensure proper box sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Reset margins and padding */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure text is visible and proper typography */
+body, html {
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure proper spacing */
+section {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Fix container issues */
+.container, .max-w-7xl, .max-w-6xl, .max-w-4xl, .max-w-3xl, .max-w-2xl {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Ensure proper text rendering */
+h1, h2, h3, h4, h5, h6, p, span, div {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Fix grid issues */
+.grid {
+  display: grid;
+  width: 100%;
+}
+
+/* Fix flex issues */
+.flex {
+  display: flex;
+  width: 100%;
+}
