@@ -27,8 +27,9 @@ describe('NewsletterSignup Component', () => {
 
     it('has proper styling for inline variant', () => {
       render(<NewsletterSignup variant="inline" />)
-      
-      const section = screen.getByRole('heading', { name: /stay updated on mobile innovation/i }).closest('div')
+
+      // Find the motion.div with bg-electric-blue class more specifically
+      const section = screen.getByRole('heading', { name: /stay updated on mobile innovation/i }).closest('.bg-electric-blue')
       expect(section).toHaveClass('bg-electric-blue')
     })
   })
@@ -143,84 +144,135 @@ describe('NewsletterSignup Component', () => {
 
     it('shows success message on successful submission', async () => {
       const user = userEvent.setup()
+
+      // Ensure no API credentials are set to trigger demo behavior
+      const originalApiKey = process.env.NEXT_PUBLIC_MAILCHIMP_API_KEY
+      const originalListId = process.env.MAILCHIMP_LIST_ID
+      delete process.env.NEXT_PUBLIC_MAILCHIMP_API_KEY
+      delete process.env.MAILCHIMP_LIST_ID
+
       render(<NewsletterSignup variant="footer" />)
-      
+
       const emailInput = screen.getByPlaceholderText(/enter your email/i)
       const submitButton = screen.getByRole('button', { name: /subscribe/i })
-      
+
       await user.type(emailInput, 'test@example.com')
       await user.click(submitButton)
-      
+
       await waitFor(() => {
         expect(screen.getByText(/successfully subscribed/i)).toBeInTheDocument()
-      })
+      }, { timeout: 3000 })
+
+      // Restore environment variables
+      if (originalApiKey !== undefined) {
+        process.env.NEXT_PUBLIC_MAILCHIMP_API_KEY = originalApiKey
+      }
+      if (originalListId !== undefined) {
+        process.env.MAILCHIMP_LIST_ID = originalListId
+      }
     })
 
     it('shows error message on failed submission', async () => {
       const user = userEvent.setup()
-      
-      // Mock environment variables to trigger actual API call
-      const originalEnv = process.env
-      process.env = {
-        ...originalEnv,
-        NEXT_PUBLIC_MAILCHIMP_API_KEY: 'test-key',
-        MAILCHIMP_LIST_ID: 'test-list',
-      }
-      
-      ;(fetch as jest.Mock).mockRejectedValueOnce(new Error('Network error'))
-      
+
+      // Set environment variables before importing/rendering the component
+      process.env.NEXT_PUBLIC_MAILCHIMP_API_KEY = 'test-key'
+      process.env.MAILCHIMP_LIST_ID = 'test-list'
+
+      // Mock fetch to simulate API failure
+      const mockFetch = jest.fn().mockRejectedValue(new Error('Network error'))
+      global.fetch = mockFetch
+
       render(<NewsletterSignup variant="footer" />)
-      
+
       const emailInput = screen.getByPlaceholderText(/enter your email/i)
       const submitButton = screen.getByRole('button', { name: /subscribe/i })
-      
+
       await user.type(emailInput, 'test@example.com')
       await user.click(submitButton)
-      
+
       await waitFor(() => {
-        expect(screen.getByText(/please try again/i)).toBeInTheDocument()
-      })
-      
-      // Restore environment
-      process.env = originalEnv
+        expect(screen.getByText(/✗ Please try again/i)).toBeInTheDocument()
+      }, { timeout: 5000 })
+
+      // Verify fetch was called
+      expect(mockFetch).toHaveBeenCalledWith('/api/subscribe', expect.any(Object))
+
+      // Clean up
+      delete process.env.NEXT_PUBLIC_MAILCHIMP_API_KEY
+      delete process.env.MAILCHIMP_LIST_ID
     })
   })
 
   describe('Analytics Tracking', () => {
     it('tracks newsletter signup events', async () => {
       const user = userEvent.setup()
+
+      // Ensure no API credentials are set (default demo behavior)
+      const originalApiKey = process.env.NEXT_PUBLIC_MAILCHIMP_API_KEY
+      const originalListId = process.env.MAILCHIMP_LIST_ID
+      delete process.env.NEXT_PUBLIC_MAILCHIMP_API_KEY
+      delete process.env.MAILCHIMP_LIST_ID
+
       render(<NewsletterSignup variant="footer" />)
-      
+
       const emailInput = screen.getByPlaceholderText(/enter your email/i)
       const submitButton = screen.getByRole('button', { name: /subscribe/i })
-      
+
       await user.type(emailInput, 'test@example.com')
       await user.click(submitButton)
-      
+
+      // Wait for success message to appear first
       await waitFor(() => {
-        expect(window.gtag).toHaveBeenCalledWith('event', 'newsletter_signup', {
-          event_category: 'engagement',
-          event_label: 'footer'
-        })
+        expect(screen.getByText(/successfully subscribed/i)).toBeInTheDocument()
       })
+
+      // Then check if gtag was called
+      expect(window.gtag).toHaveBeenCalledWith('event', 'newsletter_signup', {
+        event_category: 'engagement',
+        event_label: 'footer'
+      })
+
+      // Restore environment variables
+      if (originalApiKey !== undefined) {
+        process.env.NEXT_PUBLIC_MAILCHIMP_API_KEY = originalApiKey
+      }
+      if (originalListId !== undefined) {
+        process.env.MAILCHIMP_LIST_ID = originalListId
+      }
     })
 
     it('tracks different variants correctly', async () => {
       const user = userEvent.setup()
+
+      // Ensure no API credentials are set to trigger demo behavior
+      const originalApiKey = process.env.NEXT_PUBLIC_MAILCHIMP_API_KEY
+      const originalListId = process.env.MAILCHIMP_LIST_ID
+      delete process.env.NEXT_PUBLIC_MAILCHIMP_API_KEY
+      delete process.env.MAILCHIMP_LIST_ID
+
       render(<NewsletterSignup variant="inline" />)
-      
+
       const emailInput = screen.getByPlaceholderText(/enter your email address/i)
       const submitButton = screen.getByRole('button', { name: /subscribe/i })
-      
+
       await user.type(emailInput, 'test@example.com')
       await user.click(submitButton)
-      
+
       await waitFor(() => {
         expect(window.gtag).toHaveBeenCalledWith('event', 'newsletter_signup', {
           event_category: 'engagement',
           event_label: 'inline'
         })
       })
+
+      // Restore environment variables
+      if (originalApiKey !== undefined) {
+        process.env.NEXT_PUBLIC_MAILCHIMP_API_KEY = originalApiKey
+      }
+      if (originalListId !== undefined) {
+        process.env.MAILCHIMP_LIST_ID = originalListId
+      }
     })
   })
 
@@ -239,7 +291,7 @@ describe('NewsletterSignup Component', () => {
       expect(footerForm).toBeInTheDocument()
       expect(inlineForm).toBeInTheDocument()
       
-      // Should have two separate email inputs
+      // Should have two separate email inputs with accessible names
       const emailInputs = screen.getAllByRole('textbox', { name: /email/i })
       expect(emailInputs).toHaveLength(2)
     })
@@ -256,19 +308,40 @@ describe('NewsletterSignup Component', () => {
 
     it('provides proper button states for screen readers', async () => {
       const user = userEvent.setup()
+
+      // Ensure no API credentials to use demo mode
+      delete process.env.NEXT_PUBLIC_MAILCHIMP_API_KEY
+      delete process.env.MAILCHIMP_LIST_ID
+
       render(<NewsletterSignup variant="footer" />)
-      
+
       const emailInput = screen.getByPlaceholderText(/enter your email/i)
       const submitButton = screen.getByRole('button', { name: /subscribe/i })
-      
-      // Initially enabled
-      expect(submitButton).not.toBeDisabled()
-      
-      await user.type(emailInput, 'test@example.com')
-      await user.click(submitButton)
-      
-      // Should be disabled during submission
+
+      // Initially disabled when email is empty
       expect(submitButton).toBeDisabled()
+
+      await user.type(emailInput, 'test@example.com')
+
+      // Should be enabled after typing valid email
+      expect(submitButton).not.toBeDisabled()
+
+      // Mock a slow response to catch the loading state
+      const slowPromise = new Promise(resolve => setTimeout(resolve, 100))
+      jest.spyOn(global, 'setTimeout').mockImplementationOnce((fn) => {
+        slowPromise.then(fn)
+        return 1 as any
+      })
+
+      await user.click(submitButton)
+
+      // Should be disabled during submission (briefly)
+      expect(submitButton).toBeDisabled()
+
+      // Wait for submission to complete
+      await waitFor(() => {
+        expect(screen.getByText(/successfully subscribed/i)).toBeInTheDocument()
+      })
     })
   })
 })

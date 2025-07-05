@@ -42,7 +42,7 @@
 
 'use client';
 
-import React from 'react';
+import React, { useId } from 'react';
 import { cn } from '@/lib/utils';
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -57,9 +57,13 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, variant = 'base', label, helperText, errorMessage, ...props }, ref) => {
+  ({ className, variant = 'base', label, helperText, errorMessage, id, ...props }, ref) => {
+    const generatedId = useId();
+    const inputId = id || generatedId;
+    const hasError = variant === 'error' && !!errorMessage;
+
     const baseClasses = 'w-full px-4 py-3 rounded-lg text-base transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
-    
+
     const variants = {
       base: 'border border-border-light dark:border-border-dark focus:ring-electric-blue focus:border-electric-blue bg-surface-light dark:bg-surface-gray-dark text-text-primary dark:text-text-primary-dark placeholder-text-muted dark:placeholder-text-muted-dark',
       error: 'border border-error focus:ring-error focus:border-error bg-surface-light dark:bg-surface-gray-dark text-text-primary dark:text-text-primary-dark placeholder-text-muted dark:placeholder-text-muted-dark',
@@ -78,17 +82,20 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="w-full">
         {label && (
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label htmlFor={inputId} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
             {label}
           </label>
         )}
         <input
+          id={inputId}
           ref={ref}
           className={inputClasses}
+          aria-invalid={hasError}
+          aria-describedby={hasError ? `${inputId}-error` : undefined}
           {...props}
         />
         {displayErrorMessage && (
-          <p className="mt-2 text-sm text-red-600 dark:text-red-400">
+          <p id={`${inputId}-error`} className="mt-2 text-sm text-red-600 dark:text-red-400" role="alert">
             {errorMessage}
           </p>
         )}

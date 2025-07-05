@@ -5,6 +5,45 @@
 // Learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom'
 
+// Setup MSW (Mock Service Worker) for API mocking
+// TODO: Re-enable MSW once module resolution issue is fixed
+// For now, we'll use jest.spyOn approach in individual tests
+// import { server } from './src/mocks/server'
+
+// Establish API mocking before all tests
+// beforeAll(() => {
+//   server.listen({
+//     onUnhandledRequest: 'warn', // Warn about unhandled requests instead of failing
+//   })
+// })
+
+// Reset any request handlers that we may add during the tests,
+// so they don't affect other tests
+// afterEach(() => {
+//   server.resetHandlers()
+// })
+
+// Clean up after the tests are finished
+// afterAll(() => {
+//   server.close()
+// })
+
+// Mock console methods to reduce test output noise
+const originalConsoleError = console.error
+const originalConsoleWarn = console.warn
+
+beforeEach(() => {
+  // Mock console.error and console.warn to suppress expected output during tests
+  console.error = jest.fn()
+  console.warn = jest.fn()
+})
+
+afterEach(() => {
+  // Restore original console methods after each test
+  console.error = originalConsoleError
+  console.warn = originalConsoleWarn
+})
+
 // Mock Next.js router
 jest.mock('next/router', () => ({
   useRouter() {

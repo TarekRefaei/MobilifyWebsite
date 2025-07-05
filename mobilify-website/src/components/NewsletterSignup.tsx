@@ -48,7 +48,7 @@ const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
 
       // In a real implementation, you would call your API endpoint here
       // that handles the Mailchimp subscription
-      const response = await fetch('/api/newsletter', {
+      const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -108,6 +108,7 @@ const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email address"
+                  aria-label="Email address for newsletter"
                   required
                   className="flex-1 bg-white border-white focus:ring-white focus:border-white"
                   disabled={isSubmitting}
@@ -160,6 +161,7 @@ const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
+              aria-label="Email for newsletter"
               required
               className="bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:ring-electric-blue focus:border-electric-blue"
               disabled={isSubmitting}

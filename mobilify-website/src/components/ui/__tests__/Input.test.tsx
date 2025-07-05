@@ -7,28 +7,28 @@ describe('Input Component', () => {
   describe('Rendering', () => {
     it('renders with default props', () => {
       render(<Input />)
-      
+
       const input = screen.getByRole('textbox')
       expect(input).toBeInTheDocument()
-      expect(input).toHaveClass('border-gray-300')
+      expect(input).toHaveClass('border-border-light')
     })
 
     it('renders with label', () => {
       render(<Input label="Email Address" />)
-      
+
       expect(screen.getByText('Email Address')).toBeInTheDocument()
       expect(screen.getByLabelText('Email Address')).toBeInTheDocument()
     })
 
     it('renders with helper text', () => {
       render(<Input helperText="Enter your email address" />)
-      
+
       expect(screen.getByText('Enter your email address')).toBeInTheDocument()
     })
 
     it('applies custom className', () => {
       render(<Input className="custom-input" />)
-      
+
       const input = screen.getByRole('textbox')
       expect(input).toHaveClass('custom-input')
     })
@@ -37,51 +37,51 @@ describe('Input Component', () => {
   describe('Variants', () => {
     it('renders base variant correctly', () => {
       render(<Input variant="base" />)
-      
+
       const input = screen.getByRole('textbox')
-      expect(input).toHaveClass('border-gray-300', 'focus:ring-electric-blue')
+      expect(input).toHaveClass('border-border-light', 'focus:ring-electric-blue')
     })
 
     it('renders error variant correctly', () => {
       render(<Input variant="error" errorMessage="This field is required" />)
-      
+
       const input = screen.getByRole('textbox')
-      expect(input).toHaveClass('border-red-500', 'focus:ring-red-500')
+      expect(input).toHaveClass('border-error', 'focus:ring-error')
       expect(screen.getByText('This field is required')).toBeInTheDocument()
     })
 
     it('renders success variant correctly', () => {
       render(<Input variant="success" />)
-      
+
       const input = screen.getByRole('textbox')
-      expect(input).toHaveClass('border-green-500', 'focus:ring-green-500')
+      expect(input).toHaveClass('border-success', 'focus:ring-success')
     })
   })
 
   describe('Error Handling', () => {
     it('shows error message when variant is error', () => {
       render(<Input variant="error" errorMessage="Invalid input" />)
-      
+
       expect(screen.getByText('Invalid input')).toBeInTheDocument()
       expect(screen.getByText('Invalid input')).toHaveClass('text-red-600')
     })
 
     it('does not show helper text when error is present', () => {
       render(
-        <Input 
-          variant="error" 
-          errorMessage="Error message" 
-          helperText="Helper text" 
+        <Input
+          variant="error"
+          errorMessage="Error message"
+          helperText="Helper text"
         />
       )
-      
+
       expect(screen.getByText('Error message')).toBeInTheDocument()
       expect(screen.queryByText('Helper text')).not.toBeInTheDocument()
     })
 
     it('shows helper text when no error is present', () => {
       render(<Input helperText="Helper text" />)
-      
+
       expect(screen.getByText('Helper text')).toBeInTheDocument()
     })
   })
@@ -130,12 +130,19 @@ describe('Input Component', () => {
 
     it('has proper ARIA attributes for error state', () => {
       render(<Input variant="error" errorMessage="Error message" />)
-      
+
       const input = screen.getByRole('textbox')
       const errorMessage = screen.getByText('Error message')
-      
+
       expect(input).toHaveAttribute('aria-invalid', 'true')
       expect(errorMessage).toHaveAttribute('role', 'alert')
+    })
+
+    it('has proper ARIA attributes for non-error state', () => {
+      render(<Input variant="base" />)
+
+      const input = screen.getByRole('textbox')
+      expect(input).toHaveAttribute('aria-invalid', 'false')
     })
 
     it('supports keyboard navigation', async () => {
@@ -218,21 +225,21 @@ describe('Input Component', () => {
   describe('Dark Mode Support', () => {
     it('has dark mode classes', () => {
       render(<Input />)
-      
+
       const input = screen.getByRole('textbox')
-      expect(input).toHaveClass('dark:border-gray-600', 'dark:bg-gray-800', 'dark:text-gray-100')
+      expect(input).toHaveClass('dark:border-border-dark', 'dark:bg-surface-gray-dark', 'dark:text-text-primary-dark')
     })
 
     it('has dark mode placeholder styling', () => {
       render(<Input placeholder="Test placeholder" />)
-      
+
       const input = screen.getByRole('textbox')
-      expect(input).toHaveClass('dark:placeholder-gray-400')
+      expect(input).toHaveClass('dark:placeholder-text-muted-dark')
     })
 
     it('maintains proper contrast in dark mode', () => {
       render(<Input label="Test Label" />)
-      
+
       const label = screen.getByText('Test Label')
       expect(label).toHaveClass('dark:text-gray-300')
     })

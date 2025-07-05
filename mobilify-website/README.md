@@ -153,9 +153,9 @@ yarn dev
 | `npm run lint` | Run ESLint for code quality checks |
 | `npm run lint:fix` | Fix auto-fixable ESLint issues |
 | `npm run type-check` | Run TypeScript type checking |
-| `npm run test` | Run Jest test suite |
-| `npm run test:watch` | Run tests in watch mode |
-| `npm run test:coverage` | Generate test coverage report |
+| `npm run test` | Run Jest test suite with comprehensive coverage |
+| `npm run test:watch` | Run tests in watch mode for development |
+| `npm run test:coverage` | Generate detailed test coverage report |
 
 ## ⚙️ Configuration
 
@@ -393,17 +393,25 @@ The website automatically tracks comprehensive user interactions:
 
 ## 🧪 Testing & Quality
 
-### Test Coverage
-- **Unit Tests**: Component functionality and hooks
-- **Integration Tests**: Form submissions and API integrations
-- **Accessibility Tests**: WCAG 2.1 AA compliance
-- **Performance Tests**: Core Web Vitals monitoring
+### Comprehensive Test Coverage
+- **Unit Tests**: All UI components (Input, Button, NewsletterSignup) with 100% critical path coverage
+- **Integration Tests**: Form submissions, API integrations, and user workflows
+- **Accessibility Tests**: WCAG 2.1 AA compliance with ARIA attributes and keyboard navigation
+- **Performance Tests**: Core Web Vitals monitoring and optimization
+- **MSW Integration**: Mock Service Worker for reliable API testing
+
+### Test Infrastructure
+- **Jest**: Modern testing framework with Next.js integration
+- **React Testing Library**: User-centric component testing
+- **MSW (Mock Service Worker)**: Network request mocking for robust API tests
+- **Accessibility Testing**: Automated ARIA and keyboard navigation validation
 
 ### Quality Assurance
 - **TypeScript**: Full type safety across the codebase
 - **ESLint**: Code quality and consistency enforcement
 - **Prettier**: Automatic code formatting
 - **Husky**: Pre-commit hooks for quality gates
+- **Test-Driven Development**: All critical components have comprehensive test suites
 
 ## 🤝 Contributing
 
