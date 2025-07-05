@@ -1,0 +1,19 @@
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="400" fill="#F8FAFC"/>
+  
+  <!-- Profile Circle Background -->
+  <circle cx="200" cy="160" r="80" fill="#E2E8F0"/>
+  
+  <!-- Person Icon -->
+  <path d="M200 120C185.7 120 174 131.7 174 146C174 160.3 185.7 172 200 172C214.3 172 226 160.3 226 146C226 131.7 214.3 120 200 120Z" fill="#94A3B8"/>
+  <path d="M200 190C170 190 146 214 146 244V260H254V244C254 214 230 190 200 190Z" fill="#94A3B8"/>
+  
+  <!-- Name Label -->
+  <rect x="50" y="280" width="300" height="40" rx="8" fill="#4F46E5"/>
+  <text x="200" y="305" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" text-anchor="middle" fill="white">Alex Chen</text>
+  
+  <!-- Title Label -->
+  <rect x="75" y="330" width="250" height="30" rx="6" fill="#E2E8F0"/>
+  <text x="200" y="350" font-family="system-ui, -apple-system, sans-serif" font-size="14" text-anchor="middle" fill="#64748B">CEO & Founder</text>
+</svg>

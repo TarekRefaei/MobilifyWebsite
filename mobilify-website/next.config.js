@@ -4,11 +4,26 @@ const nextConfig = {
   images: {
     // Enable image optimization
     formats: ['image/webp', 'image/avif'],
-    // Configure image domains for external images
-    domains: [
-      'cdn.sanity.io', // Sanity CMS images
-      'images.unsplash.com', // Unsplash images
-      'via.placeholder.com', // Placeholder images
+    // Configure remote patterns for external images (replaces deprecated domains)
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'via.placeholder.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
     // Image sizes for responsive images
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],

@@ -10,15 +10,15 @@ const TeamProfiles = () => {
       name: 'Alex Chen',
       title: 'CEO & Founder',
       bio: 'A former Product Lead at Shopify, Alex saw countless businesses struggle to make the leap from web to mobile. He founded Mobilify with a passion for democratizing technology, driven by the belief that a great idea, not a massive budget, should be the only prerequisite for a world-class mobile app.',
-      // Using a placeholder service for professional headshots
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face&auto=format&q=80',
+      // Using custom placeholder image (replace with actual team photos when available)
+      image: '/images/placeholders/team-alex.svg',
     },
     {
       name: 'Maria Garcia',
       title: 'CTO & Co-Founder',
       bio: 'With a background as a Senior Software Engineer at Twilio, Maria is the technical architect behind Mobilify\'s innovative platform. She specializes in building scalable, AI-driven systems. Maria is passionate about crafting elegant code and powerful tools that make sophisticated technology feel simple and accessible to everyone.',
-      // Using a placeholder service for professional headshots
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face&auto=format&q=80',
+      // Using custom placeholder image (replace with actual team photos when available)
+      image: '/images/placeholders/team-maria.svg',
     },
   ];
 
