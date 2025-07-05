@@ -6,8 +6,7 @@
  * predefined responses, making tests more reliable and independent.
  */
 
-// Use require for MSW to avoid Jest module resolution issues
-const { http, HttpResponse } = require('msw')
+import { http, HttpResponse } from 'msw'
 
 // Newsletter subscription endpoint handlers
 export const handlers = [

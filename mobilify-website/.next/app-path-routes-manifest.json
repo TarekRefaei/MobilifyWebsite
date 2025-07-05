@@ -6,7 +6,7 @@
   "/blog/[slug]/page": "/blog/[slug]",
   "/page": "/",
   "/about/page": "/about",
-  "/services/page": "/services",
+  "/blog/page": "/blog",
   "/faq/page": "/faq",
-  "/blog/page": "/blog"
+  "/services/page": "/services"
 }

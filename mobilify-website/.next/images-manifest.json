@@ -24,11 +24,7 @@
     "path": "/_next/image",
     "loader": "default",
     "loaderFile": "",
-    "domains": [
-      "cdn.sanity.io",
-      "images.unsplash.com",
-      "via.placeholder.com"
-    ],
+    "domains": [],
     "disableStaticImages": false,
     "minimumCacheTTL": 60,
     "formats": [
@@ -38,7 +34,26 @@
     "dangerouslyAllowSVG": true,
     "contentSecurityPolicy": "default-src 'self'; script-src 'none'; sandbox;",
     "contentDispositionType": "attachment",
-    "remotePatterns": [],
+    "remotePatterns": [
+      {
+        "protocol": "https",
+        "hostname": "^(?:^(?:cdn\\.sanity\\.io)$)$",
+        "port": "",
+        "pathname": "^(?:\\/(?!\\.{1,2}(?:\\/|$))(?:(?:(?!(?:^|\\/)\\.{1,2}(?:\\/|$)).)*?))$"
+      },
+      {
+        "protocol": "https",
+        "hostname": "^(?:^(?:images\\.unsplash\\.com)$)$",
+        "port": "",
+        "pathname": "^(?:\\/(?!\\.{1,2}(?:\\/|$))(?:(?:(?!(?:^|\\/)\\.{1,2}(?:\\/|$)).)*?))$"
+      },
+      {
+        "protocol": "https",
+        "hostname": "^(?:^(?:via\\.placeholder\\.com)$)$",
+        "port": "",
+        "pathname": "^(?:\\/(?!\\.{1,2}(?:\\/|$))(?:(?:(?!(?:^|\\/)\\.{1,2}(?:\\/|$)).)*?))$"
+      }
+    ],
     "unoptimized": false,
     "sizes": [
       640,

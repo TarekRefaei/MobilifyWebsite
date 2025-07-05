@@ -1,10 +1,19 @@
 import { createClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
 
-// Check if Sanity is configured
+// Check if Sanity is configured with valid values
+const isValidProjectId = (projectId: string | undefined): boolean => {
+  if (!projectId) return false;
+  // Sanity project IDs can only contain a-z, 0-9, and dashes
+  // Also exclude placeholder values
+  return /^[a-z0-9-]+$/.test(projectId) && !projectId.includes('your_sanity_project_id');
+};
+
 const isConfigured = !!(
   process.env.NEXT_PUBLIC_SANITY_PROJECT_ID &&
-  process.env.NEXT_PUBLIC_SANITY_DATASET
+  process.env.NEXT_PUBLIC_SANITY_DATASET &&
+  isValidProjectId(process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) &&
+  !process.env.NEXT_PUBLIC_SANITY_DATASET.includes('your_sanity_dataset')
 );
 
 // Sanity client configuration (only if configured)
