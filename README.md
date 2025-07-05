@@ -9,7 +9,7 @@ This repository contains the complete source code for the Mobilify website, a mo
 ## 📁 Repository Structure
 
 ```
-MobilifyWebsiteByGemini/
+MobilifyWebsite/
 ├── mobilify-website/          # Main Next.js application
 │   ├── src/                   # Source code
 │   ├── public/                # Static assets
