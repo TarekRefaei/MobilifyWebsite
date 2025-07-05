@@ -35,9 +35,22 @@ const CrispChat: React.FC<CrispChatProps> = ({ websiteId }) => {
   // Get website ID from props or environment variable
   const crispWebsiteId = websiteId || process.env.NEXT_PUBLIC_CRISP_WEBSITE_ID;
 
+  // Check if Crisp website ID is valid
+  const isValidCrispId = (id: string | undefined): boolean => {
+    if (!id) return false;
+    // Exclude placeholder values and ensure it's a valid format
+    return !id.includes('your_crisp_website_id') &&
+           !id.includes('placeholder') &&
+           id.length > 10; // Crisp IDs are typically longer
+  };
+
   useEffect(() => {
-    if (!crispWebsiteId) {
-      console.warn('Crisp Website ID not found. Please set NEXT_PUBLIC_CRISP_WEBSITE_ID environment variable.');
+    if (!crispWebsiteId || !isValidCrispId(crispWebsiteId)) {
+      if (!crispWebsiteId) {
+        console.warn('Crisp Website ID not found. Please set NEXT_PUBLIC_CRISP_WEBSITE_ID environment variable.');
+      } else {
+        console.warn('Invalid Crisp Website ID detected. Please check your NEXT_PUBLIC_CRISP_WEBSITE_ID environment variable.');
+      }
       return;
     }
 
@@ -102,7 +115,7 @@ const CrispChat: React.FC<CrispChatProps> = ({ websiteId }) => {
     }
   }, [crispWebsiteId]);
 
-  if (!crispWebsiteId) {
+  if (!crispWebsiteId || !isValidCrispId(crispWebsiteId)) {
     return null;
   }
 

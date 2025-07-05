@@ -59,7 +59,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/": {
+    "/faq": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -72,8 +72,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/",
-      "dataRoute": "/index.rsc",
+      "srcRoute": "/faq",
+      "dataRoute": "/faq.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -131,7 +131,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/faq": {
+    "/": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -144,8 +144,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/faq",
-      "dataRoute": "/faq.rsc",
+      "srcRoute": "/",
+      "dataRoute": "/index.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -159,8 +159,8 @@
   "dynamicRoutes": {},
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "85fb3e6592301d3e940aadc2f1c070fc",
-    "previewModeSigningKey": "db1591879e018fb39ee06c669aaeb4dce12cd6e2fe0370381b058ccd94c9020f",
-    "previewModeEncryptionKey": "2070b215c78d88412d8c34062fd0b0089edabc7c7f10a9ffa0f7df4350877480"
+    "previewModeId": "5dc0fb8b988e50d7a35ae2f4d68b448e",
+    "previewModeSigningKey": "40d9613423bdd52fa7de4d220911e8859b4f6d7b05368229a29423b8d7967ea2",
+    "previewModeEncryptionKey": "fbee5c8129e5a040f165f1c92cebbea2f31c5f70bdbf4994ad99388e0adf0ef6"
   }
 }

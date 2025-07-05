@@ -39,16 +39,40 @@ const Navigation: React.FC<NavigationProps> = ({
 }) => {
   const { trackNavigation } = useAnalytics();
 
-  const scrollToSection = (sectionId: string, label: string) => {
+  const handleNavigation = (href: string, label: string, id: string) => {
+    // Handle direct page navigation (like Home)
+    if (href.startsWith('/') && !href.includes('#')) {
+      window.location.href = href;
+      trackNavigation(label, isMobile ? 'mobile_nav' : 'desktop_nav');
+      onItemClick?.();
+      return;
+    }
+
+    // Handle section scrolling
+    const sectionId = id || href.replace('#', '');
     const element = document.getElementById(sectionId);
     if (element) {
+      // If element exists on current page, scroll to it
       element.scrollIntoView({ behavior: 'smooth' });
       trackNavigation(label, isMobile ? 'mobile_nav' : 'desktop_nav');
+    } else {
+      // If element doesn't exist, navigate to home page with hash
+      const currentPath = window.location.pathname;
+      if (currentPath !== '/') {
+        // Navigate to home page with the section hash
+        window.location.href = `/#${sectionId}`;
+      }
     }
     onItemClick?.();
   };
 
-  const navItems = NAVIGATION.main;
+  // Add "Home" link when not on home page
+  const currentPath = typeof window !== 'undefined' ? window.location.pathname : '/';
+  const isHomePage = currentPath === '/';
+
+  const navItems = isHomePage
+    ? NAVIGATION.main
+    : [{ label: 'Home', href: '/', id: 'home' }, ...NAVIGATION.main];
 
   const baseClasses = isMobile 
     ? "flex flex-col space-y-4"
@@ -59,12 +83,12 @@ const Navigation: React.FC<NavigationProps> = ({
       {navItems.map((item) => (
         <button
           key={item.href}
-          onClick={() => scrollToSection(item.href.replace('#', ''), item.label)}
+          onClick={() => handleNavigation(item.href, item.label, item.id)}
           className={`
-            text-gray-700 dark:text-gray-300 hover:text-electric-blue dark:hover:text-electric-blue 
+            text-gray-700 dark:text-gray-300 hover:text-electric-blue dark:hover:text-electric-blue
             transition-colors duration-200 font-medium
-            ${isMobile 
-              ? 'text-lg py-2 text-left w-full hover:bg-gray-50 dark:hover:bg-gray-800 px-4 rounded-lg' 
+            ${isMobile
+              ? 'text-lg py-2 text-left w-full hover:bg-gray-50 dark:hover:bg-gray-800 px-4 rounded-lg'
               : 'text-sm'
             }
           `}
