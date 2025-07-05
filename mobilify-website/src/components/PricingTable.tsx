@@ -103,13 +103,7 @@ const PricingTable = () => {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="mb-12"
-        >
+        <div className="mb-12">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">
             Compare All Features & Pricing
           </h2>
@@ -197,15 +191,9 @@ const PricingTable = () => {
               </tbody>
             </table>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
+        <div className="text-center">
           <button
             onClick={() => {
               const element = document.getElementById('contact');
@@ -217,7 +205,7 @@ const PricingTable = () => {
           >
             Get Your Custom Quote
           </button>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

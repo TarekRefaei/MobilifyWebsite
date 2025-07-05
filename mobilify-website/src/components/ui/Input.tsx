@@ -42,7 +42,7 @@
 
 'use client';
 
-import React, { useId } from 'react';
+import React, { useId, useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -59,7 +59,14 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, variant = 'base', label, helperText, errorMessage, id, ...props }, ref) => {
     const generatedId = useId();
-    const inputId = id || generatedId;
+    const [isHydrated, setIsHydrated] = useState(false);
+
+    useEffect(() => {
+      setIsHydrated(true);
+    }, []);
+
+    // Use provided id or generate one only after hydration to avoid mismatch
+    const inputId = id || (isHydrated ? generatedId : undefined);
     const hasError = variant === 'error' && !!errorMessage;
 
     const baseClasses = 'w-full px-4 py-3 rounded-lg text-base transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';

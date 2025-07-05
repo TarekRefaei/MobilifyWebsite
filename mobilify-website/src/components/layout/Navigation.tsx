@@ -22,7 +22,7 @@
 
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { NAVIGATION } from '@/config/site';
 import { useAnalytics } from '@/hooks';
 
@@ -32,12 +32,18 @@ interface NavigationProps {
   className?: string;
 }
 
-const Navigation: React.FC<NavigationProps> = ({ 
-  isMobile = false, 
+const Navigation: React.FC<NavigationProps> = ({
+  isMobile = false,
   onItemClick,
   className = ''
 }) => {
   const { trackNavigation } = useAnalytics();
+  const [isHomePage, setIsHomePage] = useState(true); // Default to true to avoid hydration mismatch
+
+  useEffect(() => {
+    // Only run on client side to avoid hydration mismatch
+    setIsHomePage(window.location.pathname === '/');
+  }, []);
 
   const handleNavigation = (href: string, label: string, id: string) => {
     // Handle direct page navigation (like Home)
@@ -66,10 +72,7 @@ const Navigation: React.FC<NavigationProps> = ({
     onItemClick?.();
   };
 
-  // Add "Home" link when not on home page
-  const currentPath = typeof window !== 'undefined' ? window.location.pathname : '/';
-  const isHomePage = currentPath === '/';
-
+  // Add "Home" link when not on home page (only after hydration)
   const navItems = isHomePage
     ? NAVIGATION.main
     : [{ label: 'Home', href: '/', id: 'home' }, ...NAVIGATION.main];
