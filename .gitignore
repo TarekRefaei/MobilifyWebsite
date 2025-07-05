@@ -51,3 +51,27 @@ coverage/
 
 # Vercel
 .vercel
+
+# Documentation and development files (keep in docs/ folder)
+docs/
+TODO*.md
+FEATURE*.md
+REFACTORING*.md
+*_ANALYSIS.md
+*_STRATEGY.md
+*_SYSTEM.md
+*Plan*.md
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Testing
+.nyc_output/
+coverage/
+*.lcov
+
+# Package manager files
+package-lock.json.backup
+yarn.lock.backup
