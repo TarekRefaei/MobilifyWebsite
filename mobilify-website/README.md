@@ -4,7 +4,7 @@
 
 Built with Next.js 15, TypeScript, Tailwind CSS, and Framer Motion for optimal performance and user experience.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/TarekRefaei/MobilifyWebsiteByGemini)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/TarekRefaei/MobilifyWebsite)
 
 ## ✨ Key Features
 
@@ -116,8 +116,8 @@ mobilify-website/
 
 1. **Clone the repository:**
 ```bash
-git clone https://github.com/TarekRefaei/MobilifyWebsiteByGemini.git
-cd MobilifyWebsiteByGemini/mobilify-website
+git clone https://github.com/TarekRefaei/MobilifyWebsite.git
+cd MobilifyWebsite/mobilify-website
 ```
 
 2. **Install dependencies:**
@@ -302,7 +302,7 @@ module.exports = {
 
 Vercel provides the best experience for Next.js applications with zero configuration:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/TarekRefaei/MobilifyWebsiteByGemini)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/TarekRefaei/MobilifyWebsite)
 
 #### Quick Deploy Steps:
 1. **Push to GitHub**: Commit your code to a GitHub repository
