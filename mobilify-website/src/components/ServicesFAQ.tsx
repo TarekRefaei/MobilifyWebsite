@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
@@ -113,14 +114,14 @@ const ServicesFAQ = () => {
           className="text-center mt-12"
         >
           <p className="text-gray-600 mb-4">
-            Still have questions? We'd love to help!
+            Still have questions? We&apos;d love to help!
           </p>
-          <a
+          <Link
             href="/#contact"
             className="inline-flex items-center text-indigo-600 hover:text-indigo-700 font-semibold transition-colors duration-200"
           >
             Get in touch with our team
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

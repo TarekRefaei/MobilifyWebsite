@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Award, Users, Eye, Zap } from 'lucide-react';
 
@@ -83,15 +84,15 @@ const CompanyValues = () => {
               Ready to Work Together?
             </h3>
             <p className="text-gray-600 mb-6 leading-relaxed">
-              We'd love to learn about your project and explore how we can help bring your mobile app vision to life. 
-              Let's start a conversation about your goals and how Mobilify can support your success.
+              We&apos;d love to learn about your project and explore how we can help bring your mobile app vision to life.
+              Let&apos;s start a conversation about your goals and how Mobilify can support your success.
             </p>
-            <a
+            <Link
               href="/#contact"
               className="inline-flex items-center bg-indigo-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-indigo-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
             >
               Start Your Project
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>

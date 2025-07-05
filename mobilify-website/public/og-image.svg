@@ -1,0 +1,57 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#4F46E5"/>
+  
+  <!-- Grid pattern -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#6366F1" stroke-width="1" opacity="0.1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  
+  <!-- Logo/Brand -->
+  <rect x="80" y="80" width="60" height="60" rx="12" fill="white"/>
+  <text x="110" y="120" text-anchor="middle" fill="#4F46E5" font-family="Inter, sans-serif" font-size="32" font-weight="bold">M</text>
+  
+  <!-- Main heading -->
+  <text x="80" y="200" fill="white" font-family="Inter, sans-serif" font-size="48" font-weight="bold">
+    Turn Your Website or Idea
+  </text>
+  <text x="80" y="260" fill="white" font-family="Inter, sans-serif" font-size="48" font-weight="bold">
+    Into a Custom Mobile App
+  </text>
+  
+  <!-- Subheading -->
+  <text x="80" y="320" fill="#E0E7FF" font-family="Inter, sans-serif" font-size="24" font-weight="400">
+    Professional iOS & Android development made simple
+  </text>
+  
+  <!-- Phone mockup -->
+  <rect x="800" y="120" width="280" height="480" rx="40" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+  <rect x="820" y="160" width="240" height="400" rx="20" fill="#F3F4F6"/>
+  
+  <!-- App preview elements -->
+  <rect x="840" y="180" width="200" height="30" rx="4" fill="#4F46E5"/>
+  <rect x="840" y="230" width="160" height="20" rx="4" fill="#E5E7EB"/>
+  <rect x="840" y="260" width="120" height="20" rx="4" fill="#E5E7EB"/>
+  <rect x="840" y="300" width="200" height="80" rx="8" fill="#EEF2FF"/>
+  <rect x="840" y="400" width="80" height="30" rx="15" fill="#4F46E5"/>
+  <rect x="940" y="400" width="80" height="30" rx="15" fill="#E5E7EB"/>
+  
+  <!-- Bottom navigation -->
+  <circle cx="860" cy="520" r="8" fill="#4F46E5"/>
+  <circle cx="900" cy="520" r="8" fill="#E5E7EB"/>
+  <circle cx="940" cy="520" r="8" fill="#E5E7EB"/>
+  <circle cx="980" cy="520" r="8" fill="#E5E7EB"/>
+  
+  <!-- Call to action -->
+  <text x="80" y="420" fill="white" font-family="Inter, sans-serif" font-size="20" font-weight="600">
+    Get started today →
+  </text>
+  
+  <!-- Website URL -->
+  <text x="80" y="550" fill="#C7D2FE" font-family="Inter, sans-serif" font-size="18" font-weight="400">
+    mobilify.app
+  </text>
+</svg>

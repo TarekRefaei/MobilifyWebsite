@@ -16,7 +16,7 @@ const AnimationWrapper = ({ children, fallback = null, ...motionProps }: Animati
   }, []);
 
   if (!hasMounted) {
-    return <div {...(motionProps as any)}>{fallback || children}</div>;
+    return <div>{fallback || children}</div>;
   }
 
   return <motion.div {...motionProps}>{children}</motion.div>;

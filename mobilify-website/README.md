@@ -2,139 +2,243 @@
 
 A modern, responsive website for Mobilify - a mobile app development startup. Built with Next.js, TypeScript, Tailwind CSS, and Framer Motion.
 
-## 🚀 Features
+## ✨ Key Features
 
-- **Modern Design**: Clean, professional design with smooth animations
-- **Responsive**: Mobile-first approach with perfect responsiveness across all devices
-- **Interactive Demo**: Animated phone mockup showcasing app development process
-- **Contact Forms**: Integrated with Web3Forms for reliable form handling
-- **Analytics**: Google Analytics 4 integration with custom event tracking
-- **SEO Optimized**: Proper meta tags, structured data, and semantic HTML
-- **Performance**: Optimized for speed with Next.js 15 and modern best practices
+- **🎨 Modern Design**: Clean, professional design with smooth animations
+- **📱 Responsive**: Mobile-first approach with perfect responsiveness
+- **🎯 Interactive Demo**: Animated phone mockup showcasing app development
+- **📧 Contact Forms**: Integrated with Web3Forms for reliable form handling
+- **📊 Analytics**: Google Analytics 4 with custom event tracking
+- **🔍 SEO Optimized**: Proper meta tags, structured data, and semantic HTML
+- **⚡ Performance**: Optimized for speed with Next.js 15 and modern best practices
+- **🌙 Dark Mode**: Full dark mode support with system preference detection
+- **♿ Accessibility**: WCAG compliant with proper ARIA labels and keyboard navigation
 
 ## 🛠️ Tech Stack
 
 - **Framework**: Next.js 15 with App Router
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS 4
+- **Styling**: Tailwind CSS with semantic color tokens
 - **Animations**: Framer Motion
 - **Icons**: Lucide React
-- **Forms**: Web3Forms
-- **Analytics**: Google Analytics 4
+- **Forms**: Web3Forms integration
+- **Analytics**: Google Analytics 4 + Crisp Chat
+- **CMS Ready**: Sanity CMS integration with fallbacks
 - **Deployment**: Vercel (recommended)
 
-## 📦 Installation
+## 📁 Project Structure
 
-1. Clone the repository:
+```
+src/
+├── analytics/          # Analytics & tracking components
+├── components/         # React components
+│   ├── layout/         # Header, Footer, Navigation
+│   ├── sections/       # Page sections (Hero, Contact, etc.)
+│   └── ui/             # Reusable UI components
+├── config/             # Site configuration and fallbacks
+├── hooks/              # Custom React hooks
+├── types/              # TypeScript definitions
+└── utils/              # Helper functions
+```
+
+For detailed information about the project structure and development guidelines, see [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js 18+
+- npm or yarn package manager
+
+### Installation
+
+1. **Clone the repository:**
 ```bash
 git clone <repository-url>
 cd mobilify-website
 ```
 
-2. Install dependencies:
+2. **Install dependencies:**
 ```bash
 npm install
 ```
 
-3. Set up environment variables:
+3. **Set up environment variables:**
 ```bash
 cp .env.local.example .env.local
 ```
 
-4. Configure your environment variables (see Configuration section below)
+4. **Configure your environment variables** (see Configuration section below)
 
-5. Run the development server:
+5. **Run the development server:**
 ```bash
 npm run dev
 ```
 
-6. Open [http://localhost:3000](http://localhost:3000) in your browser
+6. **Open your browser** and navigate to [http://localhost:3000](http://localhost:3000)
+
+### Available Scripts
+
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
+npm run type-check   # Run TypeScript checks
+npm run test         # Run tests (when configured)
+```
 
 ## ⚙️ Configuration
 
-### Google Analytics Setup
+### Environment Variables
 
-1. Create a Google Analytics 4 property at [analytics.google.com](https://analytics.google.com)
-2. Get your Measurement ID (format: G-XXXXXXXXXX)
-3. Add it to your `.env.local` file:
-```
+Copy `.env.local.example` to `.env.local` and configure the following:
+
+```bash
+# Analytics
 NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=G-XXXXXXXXXX
-```
 
-### Web3Forms Setup
-
-1. Visit [web3forms.com](https://web3forms.com)
-2. Sign up for a free account
-3. Create a new form and get your access key
-4. Add it to your `.env.local` file:
-```
+# Forms
 NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=your_access_key_here
+
+# Chat (Optional)
+NEXT_PUBLIC_CRISP_WEBSITE_ID=your_crisp_id
+
+# CMS (Optional - for dynamic content)
+NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
+NEXT_PUBLIC_SANITY_DATASET=production
 ```
 
-## 📊 Analytics Events
+### Service Setup
 
-The website tracks the following custom events:
+#### 1. Google Analytics 4
+1. Create a GA4 property at [analytics.google.com](https://analytics.google.com)
+2. Get your Measurement ID (format: G-XXXXXXXXXX)
+3. Add to `.env.local`
 
-- `demo_interaction`: When users click the "Mobilify Preview" button
-- `form_submission`: When contact forms are successfully submitted
-- `view_services_details`: When users click "Compare All Features & Pricing"
+#### 2. Web3Forms (Contact Forms)
+1. Sign up at [web3forms.com](https://web3forms.com)
+2. Create a new form and get your access key
+3. Add to `.env.local`
+
+#### 3. Crisp Chat (Optional)
+1. Sign up at [crisp.chat](https://crisp.chat)
+2. Get your website ID
+3. Add to `.env.local`
+
+### Content Management
+
+The website supports both static and dynamic content:
+
+- **Static Content**: Configured in `src/config/site.ts`
+- **Dynamic Content**: Fetched from Sanity CMS with fallbacks
+- **Fallback System**: Site works perfectly without CMS configuration
 
 ## 🎨 Customization
 
-### Colors
-The color scheme is defined in `src/app/globals.css`:
-- Primary: `#4f46e5` (Indigo)
-- Text: `#111827` (Dark charcoal)
-- Background: `#ffffff` (White)
-- Logo background: `#1a1a1a` (Dark gray)
+### Design System
 
-### Content
-- Team information: Update `src/components/TeamProfiles.tsx`
-- Pricing: Update `src/components/PricingTable.tsx`
-- Company info: Update various components in `src/components/`
+Colors are defined using semantic tokens in `tailwind.config.js`:
 
-### Images
-- Team photos: Replace URLs in `TeamProfiles.tsx` with your actual photos
-- Logo: Update `src/components/Logo.tsx` with your actual logo
+```javascript
+colors: {
+  // Brand Colors
+  'electric-blue': '#4f46e5',
+  'dark-charcoal': '#111827',
 
+  // Semantic Colors
+  'surface-light': '#ffffff',
+  'text-primary': '#111827',
+  'border-light': '#e5e7eb',
+  // ... more semantic tokens
+}
+```
+
+### Content Updates
+
+- **Site Information**: Update `src/config/site.ts`
+- **Navigation**: Modify `NAVIGATION` object in site config
+- **Styling**: Use semantic color tokens from Tailwind config
+- **Components**: Follow the component architecture in [CONTRIBUTING.md](./CONTRIBUTING.md)
 ## 🚀 Deployment
 
 ### Vercel (Recommended)
 
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Add environment variables in Vercel dashboard
-4. Deploy automatically on every push
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-username/mobilify-website)
 
-### Other Platforms
+1. **Push to GitHub**: Commit your code to a GitHub repository
+2. **Connect to Vercel**: Import your repository in Vercel dashboard
+3. **Configure Environment Variables**: Add your environment variables in Vercel settings
+4. **Deploy**: Automatic deployment on every push to main branch
 
-The website can be deployed to any platform that supports Next.js:
-- Netlify
-- AWS Amplify
-- Railway
-- DigitalOcean App Platform
+### Manual Deployment Steps
 
-## 📱 Mobile-First Design
+```bash
+# Build the application
+npm run build
 
-The website follows a strict mobile-first methodology:
-- All components are designed for mobile first
-- Responsive breakpoints: `sm` (640px), `md` (768px), `lg` (1024px), `xl` (1280px)
-- Touch-friendly interactions and navigation
-- Optimized performance for mobile devices
+# Test the production build locally
+npm run start
 
-## 🔧 Development
+# Deploy to your preferred platform
+```
 
-### Available Scripts
+### Environment Variables for Production
 
-- `npm run dev`: Start development server
-- `npm run build`: Build for production
-- `npm run start`: Start production server
-- `npm run lint`: Run ESLint
+Ensure these are set in your deployment platform:
 
-### Hydration Issues Fixed
+```bash
+NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=your_access_key_here
+NEXT_PUBLIC_CRISP_WEBSITE_ID=your_crisp_id
+```
 
-The website has been optimized to prevent hydration errors by:
-- Using client-side detection for browser-dependent components
+### Other Deployment Platforms
+
+The website is compatible with any platform supporting Next.js:
+- **Netlify**: Use `@netlify/plugin-nextjs`
+- **AWS Amplify**: Full Next.js support
+- **Railway**: One-click deployment
+- **DigitalOcean App Platform**: Automatic builds
+
+## 📊 Performance & Analytics
+
+### Built-in Analytics Events
+
+The website automatically tracks:
+- **Navigation**: Header/footer link clicks
+- **Demo Interactions**: Tab switches, preview generations
+- **Form Submissions**: Contact form completions
+- **Chat Engagement**: Crisp chat interactions
+
+### Performance Features
+
+- **Next.js 15**: Latest performance optimizations
+- **Image Optimization**: Automatic WebP conversion and lazy loading
+- **Code Splitting**: Automatic route-based splitting
+- **Static Generation**: Pre-rendered pages for better SEO
+- **Bundle Analysis**: Use `npm run analyze` to inspect bundle size
+
+## 🤝 Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for:
+- Project structure details
+- Component architecture guidelines
+- Development workflow
+- Coding standards and best practices
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+- **Documentation**: Check [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed guides
+- **Issues**: Report bugs or request features via GitHub Issues
+- **Questions**: Reach out to the development team
+
+---
+
+**Built with ❤️ using Next.js, TypeScript, and Tailwind CSS**
 - Implementing proper SSR/CSR patterns
 - Wrapping client-only components appropriately
 

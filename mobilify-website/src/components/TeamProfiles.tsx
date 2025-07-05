@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 const TeamProfiles = () => {
@@ -50,10 +51,13 @@ const TeamProfiles = () => {
               className="text-center"
             >
               <div className="mb-6">
-                <img
+                <Image
                   src={member.image}
                   alt={member.name}
+                  width={192}
+                  height={192}
                   className="w-48 h-48 rounded-full mx-auto object-cover shadow-lg"
+                  priority={index === 0} // Prioritize first image for LCP
                 />
               </div>
               

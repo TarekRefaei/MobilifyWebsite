@@ -89,7 +89,7 @@ const PricingTable = () => {
     },
   ];
 
-  const renderFeatureValue = (value: any) => {
+  const renderFeatureValue = (value: boolean | string | number) => {
     if (typeof value === 'boolean') {
       return value ? (
         <Check className="w-5 h-5 text-green-500 mx-auto" />

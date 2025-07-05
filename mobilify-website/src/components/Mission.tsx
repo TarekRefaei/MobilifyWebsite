@@ -26,15 +26,15 @@ const Mission = () => {
             </p>
             
             <p>
-              We believe that innovation shouldn't be limited by technical barriers or 
+              We believe that innovation shouldn&apos;t be limited by technical barriers or
               prohibitive costs. Every great idea deserves the chance to reach users 
               through the most personal and powerful platform available – mobile devices.
             </p>
             
             <p>
               Our approach combines cutting-edge technology with human expertise, ensuring 
-              that each app we create is not just functional, but exceptional. We're not 
-              just building apps; we're building the future of mobile experiences, one 
+              that each app we create is not just functional, but exceptional. We&apos;re not
+              just building apps; we&apos;re building the future of mobile experiences, one
               project at a time.
             </p>
           </div>

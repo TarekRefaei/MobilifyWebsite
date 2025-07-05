@@ -1,0 +1,60 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="600" fill="#4F46E5"/>
+  
+  <!-- Grid pattern -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#6366F1" stroke-width="1" opacity="0.1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="600" fill="url(#grid)"/>
+  
+  <!-- Logo/Brand -->
+  <rect x="80" y="80" width="50" height="50" rx="10" fill="white"/>
+  <text x="105" y="112" text-anchor="middle" fill="#4F46E5" font-family="Inter, sans-serif" font-size="28" font-weight="bold">M</text>
+  
+  <!-- Main heading -->
+  <text x="80" y="180" fill="white" font-family="Inter, sans-serif" font-size="42" font-weight="bold">
+    Turn Your Website Into a Mobile App
+  </text>
+  
+  <!-- Subheading -->
+  <text x="80" y="230" fill="#E0E7FF" font-family="Inter, sans-serif" font-size="20" font-weight="400">
+    Professional iOS & Android development made simple
+  </text>
+  
+  <!-- Phone mockup -->
+  <rect x="700" y="100" width="220" height="380" rx="30" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+  <rect x="715" y="130" width="190" height="320" rx="15" fill="#F3F4F6"/>
+  
+  <!-- App preview elements -->
+  <rect x="730" y="145" width="160" height="25" rx="3" fill="#4F46E5"/>
+  <rect x="730" y="185" width="120" height="15" rx="3" fill="#E5E7EB"/>
+  <rect x="730" y="210" width="90" height="15" rx="3" fill="#E5E7EB"/>
+  <rect x="730" y="240" width="160" height="60" rx="6" fill="#EEF2FF"/>
+  <rect x="730" y="320" width="60" height="25" rx="12" fill="#4F46E5"/>
+  <rect x="800" y="320" width="60" height="25" rx="12" fill="#E5E7EB"/>
+  
+  <!-- Bottom navigation -->
+  <circle cx="745" cy="420" r="6" fill="#4F46E5"/>
+  <circle cx="775" cy="420" r="6" fill="#E5E7EB"/>
+  <circle cx="805" cy="420" r="6" fill="#E5E7EB"/>
+  <circle cx="835" cy="420" r="6" fill="#E5E7EB"/>
+  
+  <!-- Features -->
+  <text x="80" y="320" fill="white" font-family="Inter, sans-serif" font-size="16" font-weight="600">
+    ✓ iOS & Android Apps
+  </text>
+  <text x="80" y="350" fill="white" font-family="Inter, sans-serif" font-size="16" font-weight="600">
+    ✓ Custom Design
+  </text>
+  <text x="80" y="380" fill="white" font-family="Inter, sans-serif" font-size="16" font-weight="600">
+    ✓ Fast Delivery
+  </text>
+  
+  <!-- Website URL -->
+  <text x="80" y="520" fill="#C7D2FE" font-family="Inter, sans-serif" font-size="16" font-weight="400">
+    mobilify.app
+  </text>
+</svg>

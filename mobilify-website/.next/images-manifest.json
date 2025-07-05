@@ -24,14 +24,19 @@
     "path": "/_next/image",
     "loader": "default",
     "loaderFile": "",
-    "domains": [],
+    "domains": [
+      "cdn.sanity.io",
+      "images.unsplash.com",
+      "via.placeholder.com"
+    ],
     "disableStaticImages": false,
     "minimumCacheTTL": 60,
     "formats": [
-      "image/webp"
+      "image/webp",
+      "image/avif"
     ],
-    "dangerouslyAllowSVG": false,
-    "contentSecurityPolicy": "script-src 'none'; frame-src 'none'; sandbox;",
+    "dangerouslyAllowSVG": true,
+    "contentSecurityPolicy": "default-src 'self'; script-src 'none'; sandbox;",
     "contentDispositionType": "attachment",
     "remotePatterns": [],
     "unoptimized": false,
